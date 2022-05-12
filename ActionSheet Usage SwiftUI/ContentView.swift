@@ -8,9 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var actionSheetGorunsunMu = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        Button {
+            self.actionSheetGorunsunMu = true
+        } label: {
+            Text("Action Sheet Goster")
+        }
+        .actionSheet(isPresented: $actionSheetGorunsunMu) {
+            
+            ActionSheet(title: Text("Başlık"), message: Text("Mesaj")
+                        , buttons: [
+            
+                            .default(Text("Default/Tamam")){
+                                print("Tamam Tıklandı")
+                            },
+                            
+                                .destructive(Text("Destructive/İptal")) {
+                                    print("İptal Tıklandı")
+                                }
+                                
+            
+            
+            ])
+        }
     }
 }
 
